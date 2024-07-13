@@ -1,23 +1,23 @@
 import Foundation
 
-struct Todoitem: Identifiable {
-    enum Importance: String {
+public struct Todoitem: Identifiable {
+    public enum Importance: String {
         case unimportant = "unimportant"
         case ordinary = "ordinary"
         case important = "important"
     }
     
-    let id: String
-    var text: String
-    var importance: Importance
-    var deadline: Date?
-    var isDone: Bool
-    let dateCreated: Date
-    let dateChanged: Date?
-    var color: String?
-    var category: TodoCategory
+    public let id: String
+    public var text: String
+    public var importance: Importance
+    public var deadline: Date?
+    public var isDone: Bool
+    public let dateCreated: Date
+    public let dateChanged: Date?
+    public var color: String?
+    public var category: TodoCategory
     
-    init(id: String = UUID().uuidString,
+    public init(id: String = UUID().uuidString,
          text: String,
          importance: Importance = .ordinary,
          deadline: Date? = nil,

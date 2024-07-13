@@ -1,25 +1,27 @@
 import Foundation
 
 
-final class FileCache {
-    var todoitems: [String: Todoitem] = [:]
-    var items: [Todoitem] {
+public final class FileCache {
+    public var todoitems: [String: Todoitem] = [:]
+    public var items: [Todoitem] {
         return Array(todoitems.values)
     }
 
-    func addItem(_ item: Todoitem) {
+    public func addItem(_ item: Todoitem) {
         todoitems[item.id] = item
     }
     
-    func removeItem(_ id: String) {
+    public func removeItem(_ id: String) {
         todoitems[id] = nil
     }
     
-    func updateItem(_ id: String, _ item: Todoitem) {
+    public func updateItem(_ id: String, _ item: Todoitem) {
         todoitems[id] = item
     }
     
-    subscript(id: String) -> Todoitem? {
+    public init() {}
+    
+    public subscript(id: String) -> Todoitem? {
         get {
             return todoitems[id]
         }
@@ -28,7 +30,7 @@ final class FileCache {
         }
     }
     
-    func save(to fileName: String) throws {
+    public func save(to fileName: String) throws {
         let fileExtension = (fileName as NSString).pathExtension.lowercased()
         guard let fileURL = getCacheDirectory()?.appendingPathComponent(fileName) else { return }
 
@@ -51,7 +53,7 @@ final class FileCache {
         }
     }
     
-    func load(from fileName: String) throws {
+    public func load(from fileName: String) throws {
         let fileExtension = (fileName as NSString).pathExtension.lowercased()
         guard let fileURL = getCacheDirectory()?.appendingPathComponent(fileName) else { return }
 
